@@ -1,7 +1,7 @@
 /**
- * Nexus site ayarları — sadece bu dosyayı düzenle.
- * Boş bıraktığın link satırları sitede GİZLENİR.
- * Galeri: gallery/ klasörüne jpg/png koy + aşağıya satır ekle.
+ * 
+ *
+ * 
  */
 window.NEXUS_CONFIG = {
   // Üst bar + İletişim sekmesinde görünür
@@ -9,9 +9,9 @@ window.NEXUS_CONFIG = {
     telegram_channel: "https://t.me/Nexusanalizduyuru",  // Duyuru kanalı
     telegram_group: "https://t.me/+o_C2Etq289hjYTI0",                                 // Sinyal grubu (varsa yapıştır)
     telegram_bot: "",                                   // Bot kullanıcı adı linki (opsiyonel)
-    github: "https://hasanm3547.github.io/nexus/",
+    github: "https://nexus3535.github.io/nexus/",
     email: "",                                          // mailto:adres  veya boş
-    website: "https://hasanm3547.github.io/nexus/",
+    website: "https://nexus3535.github.io/nexus/",
   },
 
   // Galeri sekmesi — dosya adı gallery/ altında olmalı
