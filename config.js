@@ -7,7 +7,7 @@ window.NEXUS_CONFIG = {
   // Üst bar + İletişim sekmesinde görünür
   links: {
     telegram_channel: "https://t.me/Nexusanalizduyuru",  // Duyuru kanalı
-    telegram_group: "https://t.me/+o_C3Etq289hjYTI0",                                 // Sinyal grubu (varsa yapıştır)
+    telegram_group: "https://t.me/+o_C2Etq289hjYTI0",                                 // Sinyal grubu (varsa yapıştır)
     telegram_bot: "",                                   // Bot kullanıcı adı linki (opsiyonel)
     github: "https://nexus3535.github.io/nexus/",
     email: "",                                          // mailto:adres  veya boş
@@ -40,6 +40,16 @@ window.NEXUS_CONFIG = {
       file: "05_rejim_setup.jpg",
       title: "Rejim × setup",
       caption: "Bağlam dilimleri — skor formülü değişmez",
+    },
+    {
+      file: "06_tarama.jpg",
+      title: "tarama",
+      caption: "sinyal için",
+    },
+    {
+      file: "07_tarama.jpg",
+      title: "tarama",
+      caption: "sinyal için",
     },
   ],
 };
