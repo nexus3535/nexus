@@ -27,96 +27,163 @@
       line-height: 1.55;
       min-height: 100vh;
     }
-    .wrap { max-width: 920px; margin: 0 auto; padding: 0 20px 64px; }
-    header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 22px 0 8px; border-bottom: 1px solid var(--line);
-      margin-bottom: 36px;
+    .wrap { max-width: 980px; margin: 0 auto; padding: 0 18px 56px; }
+    .top {
+      position: sticky; top: 0; z-index: 40;
+      background: rgba(7, 11, 18, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+      margin: 0 -18px 28px; padding: 12px 18px;
     }
-    .brand { display: flex; align-items: center; gap: 14px; }
-    .brand img { width: 52px; height: 52px; border-radius: 12px; }
+    .top-inner {
+      max-width: 980px; margin: 0 auto;
+      display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px;
+      justify-content: space-between;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand img { width: 44px; height: 44px; border-radius: 10px; }
     .brand h1 {
-      font-size: 1.45rem; font-weight: 700; letter-spacing: 0.04em;
+      font-size: 1.25rem; font-weight: 700; letter-spacing: 0.04em;
       background: linear-gradient(90deg, #67e8f9, #a5b4fc);
       -webkit-background-clip: text; background-clip: text; color: transparent;
     }
-    .brand span { display: block; font-size: 0.75rem; color: var(--muted); font-weight: 500; letter-spacing: 0.02em; }
+    .brand span { display: block; font-size: 0.7rem; color: var(--muted); font-weight: 500; }
+    .top-links { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.78rem; padding: 6px 12px; border-radius: 999px;
+      border: 1px solid var(--cyan-dim); color: var(--cyan);
+      background: rgba(34,211,238,0.07); text-decoration: none;
+    }
+    .chip:hover { background: rgba(34,211,238,0.14); text-decoration: none; }
+    .chip.ghost {
+      border-color: var(--line); color: var(--muted);
+      background: transparent;
+    }
     .badge {
-      font-size: 0.72rem; color: var(--cyan); border: 1px solid var(--cyan-dim);
-      padding: 6px 12px; border-radius: 999px; background: rgba(34,211,238,0.06);
+      font-size: 0.7rem; color: var(--ok); border: 1px solid rgba(52,211,153,0.35);
+      padding: 5px 10px; border-radius: 999px; background: rgba(52,211,153,0.08);
     }
-    .hero {
-      display: grid; gap: 28px; margin-bottom: 40px;
+    .tabs {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 26px; padding-bottom: 2px;
     }
-    @media (min-width: 720px) {
-      .hero { grid-template-columns: 1.2fr 0.8fr; align-items: center; }
+    .tab {
+      appearance: none; border: none; cursor: pointer;
+      background: transparent; color: var(--muted);
+      font-size: 0.92rem; font-weight: 600;
+      padding: 10px 16px; border-radius: 10px 10px 0 0;
+      border-bottom: 2px solid transparent; margin-bottom: -2px;
     }
+    .tab:hover { color: var(--text); background: rgba(255,255,255,0.03); }
+    .tab.active {
+      color: var(--cyan);
+      border-bottom-color: var(--cyan);
+      background: rgba(34,211,238,0.06);
+    }
+    .panel { display: none; animation: fade 0.25s ease; }
+    .panel.active { display: block; }
+    @keyframes fade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
     .hero h2 {
-      font-size: clamp(1.55rem, 3.5vw, 2.05rem);
-      line-height: 1.25; font-weight: 700; margin-bottom: 14px;
+      font-size: clamp(1.45rem, 3.2vw, 1.95rem);
+      line-height: 1.25; font-weight: 700; margin-bottom: 12px;
     }
-    .hero p { color: var(--muted); font-size: 1.02rem; max-width: 36em; }
-    .hero-visual {
-      background: radial-gradient(ellipse at 50% 30%, rgba(34,211,238,0.12), transparent 65%),
-                  var(--panel);
-      border: 1px solid var(--line); border-radius: 20px;
-      padding: 28px; text-align: center;
-    }
-    .hero-visual img { width: min(200px, 70%); height: auto; filter: drop-shadow(0 0 28px rgba(34,211,238,0.25)); }
-    .hero-visual .cap { margin-top: 12px; font-size: 0.8rem; color: var(--muted); }
-
-    section { margin-bottom: 32px; }
-    section h3 {
-      font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em;
+    .hero p { color: var(--muted); font-size: 1.02rem; max-width: 40em; margin-bottom: 18px; }
+    .sec-title {
+      font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.12em;
       color: var(--cyan); margin-bottom: 12px; font-weight: 600;
     }
     .card {
       background: var(--panel); border: 1px solid var(--line);
-      border-radius: 16px; padding: 22px 24px;
+      border-radius: 16px; padding: 20px 22px;
     }
-    .grid {
-      display: grid; gap: 14px;
-    }
+    .grid { display: grid; gap: 12px; }
     @media (min-width: 640px) {
       .grid.two { grid-template-columns: 1fr 1fr; }
       .grid.three { grid-template-columns: 1fr 1fr 1fr; }
     }
     .item {
       background: var(--panel2); border: 1px solid var(--line);
-      border-radius: 12px; padding: 16px 18px;
+      border-radius: 12px; padding: 14px 16px;
     }
-    .item strong { display: block; font-size: 0.95rem; margin-bottom: 6px; }
+    .item strong { display: block; font-size: 0.95rem; margin-bottom: 5px; }
     .item p { font-size: 0.88rem; color: var(--muted); }
     ul.clean { list-style: none; }
     ul.clean li {
-      padding: 10px 0; border-bottom: 1px solid var(--line);
-      font-size: 0.95rem; color: var(--muted);
+      padding: 9px 0; border-bottom: 1px solid var(--line);
+      font-size: 0.94rem; color: var(--muted);
       padding-left: 1.1em; position: relative;
     }
     ul.clean li:last-child { border-bottom: none; }
     ul.clean li::before {
-      content: ""; position: absolute; left: 0; top: 1.15em;
+      content: ""; position: absolute; left: 0; top: 1.05em;
       width: 6px; height: 6px; border-radius: 50%; background: var(--cyan-dim);
     }
-    .do-dont {
-      display: grid; gap: 14px;
-    }
+    .do-dont { display: grid; gap: 12px; }
     @media (min-width: 640px) { .do-dont { grid-template-columns: 1fr 1fr; } }
     .do-dont .yes { border-color: rgba(52,211,153,0.35); }
     .do-dont .no { border-color: rgba(248,113,113,0.3); }
-    .do-dont h4 { font-size: 0.9rem; margin-bottom: 10px; }
+    .do-dont h4 { font-size: 0.9rem; margin-bottom: 8px; }
     .do-dont .yes h4 { color: var(--ok); }
     .do-dont .no h4 { color: #f87171; }
-    .do-dont li { color: var(--muted); font-size: 0.88rem; margin: 6px 0 6px 1em; }
+    .do-dont li { color: var(--muted); font-size: 0.88rem; margin: 5px 0 5px 1em; }
     .notice {
       background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.35);
-      border-radius: 12px; padding: 16px 18px; font-size: 0.9rem; color: #fde68a;
+      border-radius: 12px; padding: 14px 16px; font-size: 0.9rem; color: #fde68a;
     }
     .notice strong { color: var(--warn); }
+    .shots { display: grid; gap: 14px; }
+    @media (min-width: 700px) { .shots { grid-template-columns: 1fr 1fr; } }
+    .shot {
+      background: var(--panel); border: 1px solid var(--line);
+      border-radius: 14px; overflow: hidden; cursor: zoom-in;
+    }
+    .shot img {
+      width: 100%; height: auto; display: block;
+      aspect-ratio: 16 / 10; object-fit: cover; object-position: top;
+      border-bottom: 1px solid var(--line);
+    }
+    .shot .meta { padding: 12px 14px; }
+    .shot .meta strong { display: block; font-size: 0.9rem; margin-bottom: 3px; }
+    .shot .meta span { font-size: 0.8rem; color: var(--muted); }
+    .gallery-empty {
+      color: var(--muted); font-size: 0.95rem; padding: 28px;
+      text-align: center; border: 1px dashed var(--line); border-radius: 14px;
+    }
+    .gallery-hint {
+      font-size: 0.82rem; color: var(--muted); margin-top: 14px;
+      padding: 12px 14px; background: var(--panel2); border-radius: 10px; border: 1px solid var(--line);
+    }
+    .gallery-hint code {
+      background: rgba(34,211,238,0.1); color: var(--cyan);
+      padding: 1px 6px; border-radius: 4px; font-size: 0.8rem;
+    }
+    .lb {
+      display: none; position: fixed; inset: 0; z-index: 100;
+      background: rgba(0,0,0,0.88); align-items: center; justify-content: center;
+      padding: 20px; cursor: zoom-out;
+    }
+    .lb.on { display: flex; }
+    .lb img {
+      max-width: min(96vw, 1200px); max-height: 90vh;
+      border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .contact-list { display: grid; gap: 10px; }
+    .contact-row {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+      gap: 10px; padding: 14px 16px; background: var(--panel2);
+      border: 1px solid var(--line); border-radius: 12px;
+    }
+    .contact-row .label { font-weight: 600; font-size: 0.95rem; }
+    .contact-row .sub { font-size: 0.8rem; color: var(--muted); display: block; margin-top: 2px; }
+    .about-prose { color: var(--muted); font-size: 0.98rem; }
+    .about-prose p { margin-bottom: 14px; }
+    .about-prose h4 { color: var(--text); font-size: 1rem; margin: 18px 0 8px; }
     footer {
-      margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--line);
-      font-size: 0.8rem; color: var(--muted); display: flex; flex-wrap: wrap;
-      justify-content: space-between; gap: 10px;
+      margin-top: 40px; padding-top: 18px; border-top: 1px solid var(--line);
+      font-size: 0.8rem; color: var(--muted);
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px;
     }
     a { color: var(--cyan); text-decoration: none; }
     a:hover { text-decoration: underline; }
@@ -124,39 +191,41 @@
 </head>
 <body>
   <div class="wrap">
-    <header>
-      <div class="brand">
-        <img src="logo.png" width="52" height="52" alt="Nexus logo" />
-        <div>
-          <h1>NEXUS</h1>
-          <span>Analiz · takip · öğrenme</span>
+    <div class="top">
+      <div class="top-inner">
+        <div class="brand">
+          <img src="logo.png" width="44" height="44" alt="Nexus" />
+          <div>
+            <h1>NEXUS</h1>
+            <span>Analiz · takip · öğrenme</span>
+          </div>
         </div>
+        <div class="top-links" id="top-links"></div>
       </div>
-      <div class="badge">İzleme modu</div>
-    </header>
+    </div>
 
-    <div class="hero">
-      <div>
+    <nav class="tabs" role="tablist">
+      <button type="button" class="tab active" data-tab="ana" role="tab">Ana</button>
+      <button type="button" class="tab" data-tab="galeri" role="tab">Galeri</button>
+      <button type="button" class="tab" data-tab="hakkinda" role="tab">Hakkında</button>
+      <button type="button" class="tab" data-tab="iletisim" role="tab">İletişim</button>
+    </nav>
+
+    <div class="panel active" id="panel-ana" role="tabpanel">
+      <div class="hero">
         <h2>Çok varlıklı piyasaya disiplinli bakış</h2>
         <p>
           Nexus; kripto, emtia (TradFi) ve forex sembollerinde yapı, momentum ve risk
           katmanlarını bir arada okuyan bir masaüstü analiz sistemidir.
-          Amaç “çok işlem” değil: <strong style="color:#e8eef7">doğru koşullarda, ölçülebilir riskle</strong> sinyal üretmek
-          ve sonuçlardan öğrenmektir.
+          Amaç “çok işlem” değil: <strong style="color:#e8eef7">doğru koşullarda, ölçülebilir riskle</strong>
+          sinyal üretmek ve sonuçlardan öğrenmektir.
         </p>
       </div>
-      <div class="hero-visual">
-        <img src="logo.png" alt="Nexus" />
-        <div class="cap">Gerçek piyasa verisi · paper + isteğe bağlı BingX takip</div>
-      </div>
-    </div>
-
-    <section>
-      <h3>Nelere bakıyor</h3>
-      <div class="grid three">
+      <div class="sec-title">Nelere bakıyor</div>
+      <div class="grid three" style="margin-bottom:28px;">
         <div class="item">
           <strong>Yapı &amp; trend</strong>
-          <p>Fiyat yapısı, hareketli ortalamalar, rejim (trend / yatay) ve üst–alt zaman dilimi uyumu.</p>
+          <p>Fiyat yapısı, ortalamalar, rejim (trend / yatay) ve üst–alt zaman dilimi uyumu.</p>
         </div>
         <div class="item">
           <strong>Momentum &amp; akış</strong>
@@ -164,27 +233,21 @@
         </div>
         <div class="item">
           <strong>Risk &amp; portföy</strong>
-          <p>İşlem başı risk yüzdesi, sınıf / aile ısı (heat), ardışık kayıp ve seans bağlamı.</p>
+          <p>İşlem başı risk, sınıf ısı (heat), ardışık kayıp ve seans bağlamı.</p>
         </div>
       </div>
-    </section>
-
-    <section>
-      <h3>Ne yapıyor</h3>
-      <div class="card">
+      <div class="sec-title">Ne yapıyor</div>
+      <div class="card" style="margin-bottom:28px;">
         <ul class="clean">
           <li>Canlı veriden periyodik tarama ve yön / güven / kalite değerlendirmesi</li>
           <li>Paper (simülasyon) defterinde açılış–kapanış ve R dilinde sonuç kaydı</li>
           <li>İsteğe bağlı BingX tarafında pozisyon okuma ve kapanışların öğrenmeye yazılması</li>
-          <li>Hibrit öğrenme: zayıf yönleri yumuşatma, bağlam ve boyut ayarı (skor formülü sabit kalır)</li>
+          <li>Hibrit öğrenme: zayıf yönleri yumuşatma, bağlam ve boyut ayarı (skor formülü sabit)</li>
           <li>Telegram: gruba seçilmiş bildirimler; özel sohbette özet komutları</li>
         </ul>
       </div>
-    </section>
-
-    <section>
-      <h3>Ne yapmıyor</h3>
-      <div class="do-dont">
+      <div class="sec-title">Ne yapmıyor</div>
+      <div class="do-dont" style="margin-bottom:28px;">
         <div class="card yes">
           <h4>Şeffaf duruş</h4>
           <ul>
@@ -199,37 +262,173 @@
           <ul>
             <li>Yatırım tavsiyesi değildir</li>
             <li>Garantili kazanç vaadi yoktur</li>
-            <li>Sahte veya geriye dönük uydurma sonuç paylaşılmaz</li>
-            <li>Varsayılan olarak her sinyali borsaya otomatik basmaz</li>
+            <li>Sahte veya uydurma sonuç paylaşılmaz</li>
+            <li>Varsayılan olarak her sinyali otomatik borsaya basmaz</li>
           </ul>
         </div>
       </div>
-    </section>
-
-    <section>
-      <h3>Varlık sınıfları</h3>
-      <div class="grid three">
+      <div class="sec-title">Varlık sınıfları</div>
+      <div class="grid three" style="margin-bottom:28px;">
         <div class="item"><strong>Kripto</strong><p>Likit perpetual çiftler</p></div>
-        <div class="item"><strong>TradFi / emtia</strong><p>Altın, gümüş, enerji vb. (borsa listesine bağlı)</p></div>
+        <div class="item"><strong>TradFi / emtia</strong><p>Altın, gümüş, enerji (borsa listesine bağlı)</p></div>
         <div class="item"><strong>Forex</strong><p>Seçilmiş major çiftler, seans duyarlı</p></div>
       </div>
-    </section>
-
-    <section>
       <div class="notice">
-        <strong>Önemli:</strong> Bu sayfa tanıtımdır; canlı bakiye, win rate veya getiri tablosu bilerek
-        yayınlanmaz. Geçmiş sonuçlar geleceği garanti etmez. Kendi risk limitlerinle ve
-        yalnızca anlayarak kullan.
+        <strong>Önemli:</strong> Bu site tanıtır; canlı getiri tablosu bilerek yayınlanmaz.
+        Geçmiş sonuçlar geleceği garanti etmez. Kendi risk limitlerinle kullan.
       </div>
-    </section>
+    </div>
+
+    <div class="panel" id="panel-galeri" role="tabpanel">
+      <div class="sec-title">Arayüz görselleri</div>
+      <p style="color:var(--muted);font-size:0.92rem;margin-bottom:16px;">
+        Gerçek masaüstü ekranları. Paper simülasyon görünür olabilir — getiri vaadi değildir.
+      </p>
+      <div class="shots" id="gallery-root"></div>
+    </div>
+
+    <div class="panel" id="panel-hakkinda" role="tabpanel">
+      <div class="sec-title">Hakkında</div>
+      <div class="card about-prose">
+        <p>
+          <strong style="color:#e8eef7">Nexus</strong>, tek masaüstü uygulamada tarama, sinyal,
+          paper defter, BingX okuma ve hibrit öğrenmeyi bir araya getirir. İlke:
+          skor formülünü bozmamak; katmanları soft bonus / kapı / boyut ile eklemek;
+          her şeyi ayarlardan açıp kapatabilmek.
+        </p>
+        <h4>Çalışma özeti</h4>
+        <p>
+          Periyodik tarama canlı veriyi okur; rejim, setup, momentum veto, uzama filtreleri
+          ve portföy heat birlikte değerlendirilir. Adaylar güven ve kalite ile listelenir.
+          Paper’da risk yüzdesine göre sanal pozisyon açılır; kapanışlar R dilinde journal’a yazılır.
+          BingX varsa gerçek pozisyonlar okunabilir; kapanışlar öğrenmeye ayrı ağırlıkla girebilir.
+        </p>
+        <h4>Öğrenme</h4>
+        <p>
+          Hibrit öğrenme sembol, yön, setup ve rejim bağlamına göre bonus / yumuşak engel /
+          boyut üretir. Skoru ezmez; zayıf örneklerde temkinli, güçlü bağlamda tutarlı seçim hedefler.
+          Engeller süreli değil: WR toparlanınca kalkabilir.
+        </p>
+        <h4>Şeffaflık</h4>
+        <p>
+          Site ve duyuru kanalında sahte veri, uydurma win rate veya garantili kazanç dili yok.
+          Ne olduğu ve olmadığı net yazılır.
+        </p>
+        <h4>Durum</h4>
+        <p>
+          İzleme modunda geliştirilir. Otomatik emir varsayılan kapalı; manuel veya kontrollü geçiş tercih edilir.
+        </p>
+      </div>
+    </div>
+
+    <div class="panel" id="panel-iletisim" role="tabpanel">
+      <div class="sec-title">İletişim</div>
+      <p style="color:var(--muted);font-size:0.92rem;margin-bottom:16px;">
+        Resmi kanallar ve bağlantılar.
+      </p>
+      <div class="contact-list" id="contact-root"></div>
+    </div>
 
     <footer>
-      <div>© Nexus · Bağımsız analiz aracı</div>
-      <div>
-        Duyuru:
-        <a href="https://t.me/Nexusanalizduyuru" target="_blank" rel="noopener">t.me/Nexusanalizduyuru</a>
-      </div>
+      <div>© Nexus · Bağımsız analiz aracı · Yatırım tavsiyesi değildir</div>
+      <div id="footer-link"></div>
     </footer>
   </div>
+
+  <div class="lb" id="lightbox" title="Kapatmak için tıkla">
+    <img src="" alt="Büyütülmüş görsel" id="lightbox-img" />
+  </div>
+
+  <script src="config.js"></script>
+  <script>
+    (function () {
+      var cfg = window.NEXUS_CONFIG || { links: {}, gallery: [] };
+      var L = cfg.links || {};
+      function isUrl(s) {
+        return typeof s === "string" && s.trim().length > 8;
+      }
+      var top = document.getElementById("top-links");
+      var chips = [];
+      if (isUrl(L.telegram_channel))
+        chips.push('<a class="chip" href="' + L.telegram_channel + '" target="_blank" rel="noopener">Duyuru kanalı</a>');
+      if (isUrl(L.telegram_group))
+        chips.push('<a class="chip" href="' + L.telegram_group + '" target="_blank" rel="noopener">Sinyal grubu</a>');
+      if (isUrl(L.telegram_bot))
+        chips.push('<a class="chip ghost" href="' + L.telegram_bot + '" target="_blank" rel="noopener">Bot</a>');
+      chips.push('<span class="badge">İzleme modu</span>');
+      top.innerHTML = chips.join("");
+
+      var fl = document.getElementById("footer-link");
+      if (isUrl(L.telegram_channel))
+        fl.innerHTML = 'Duyuru: <a href="' + L.telegram_channel + '" target="_blank" rel="noopener">Telegram</a>';
+
+      var root = document.getElementById("gallery-root");
+      var items = Array.isArray(cfg.gallery) ? cfg.gallery : [];
+      if (!items.length) {
+        root.innerHTML = '<div class="gallery-empty">Henüz görsel eklenmedi.</div>';
+      } else {
+        root.innerHTML = items.map(function (g) {
+          var src = "gallery/" + g.file;
+          var title = g.title || g.file;
+          var cap = g.caption || "";
+          return '<div class="shot" data-full="' + src + '">' +
+            '<img src="' + src + '" alt="' + title + '" loading="lazy" />' +
+            '<div class="meta"><strong>' + title + '</strong><span>' + cap + '</span></div></div>';
+        }).join("");
+      }
+      var lb = document.getElementById("lightbox");
+      var lbImg = document.getElementById("lightbox-img");
+      root.addEventListener("click", function (e) {
+        var shot = e.target.closest(".shot");
+        if (!shot) return;
+        lbImg.src = shot.getAttribute("data-full");
+        lb.classList.add("on");
+      });
+      lb.addEventListener("click", function () {
+        lb.classList.remove("on");
+        lbImg.src = "";
+      });
+
+      var contactDefs = [
+        { key: "telegram_channel", label: "Telegram duyuru kanalı", sub: "Gürültüsüz vitrin · sinyal yok" },
+        { key: "telegram_group", label: "Telegram sinyal grubu", sub: "Sinyal ve bildirimler" },
+        { key: "telegram_bot", label: "Telegram bot", sub: "Özet komutları (özel sohbet)" },
+        { key: "website", label: "Web sitesi", sub: "Bu tanıtım sayfası" },
+        { key: "github", label: "GitHub / sayfa", sub: "Kaynak veya Pages" },
+        { key: "email", label: "E-posta", sub: "Yazılı iletişim" },
+      ];
+      var croot = document.getElementById("contact-root");
+      var rows = contactDefs.filter(function (d) { return isUrl(L[d.key]); }).map(function (d) {
+        return '<div class="contact-row"><div><span class="label">' + d.label +
+          '</span><span class="sub">' + d.sub + '</span></div>' +
+          '<a class="chip" href="' + L[d.key] + '" target="_blank" rel="noopener">Aç</a></div>';
+      });
+      croot.innerHTML = rows.length ? rows.join("") : '<div class="gallery-empty">Şu an listelenecek bağlantı yok.</div>';
+
+      var tabs = document.querySelectorAll(".tab");
+      var panels = {
+        ana: document.getElementById("panel-ana"),
+        galeri: document.getElementById("panel-galeri"),
+        hakkinda: document.getElementById("panel-hakkinda"),
+        iletisim: document.getElementById("panel-iletisim"),
+      };
+      function show(name) {
+        tabs.forEach(function (t) {
+          t.classList.toggle("active", t.getAttribute("data-tab") === name);
+        });
+        Object.keys(panels).forEach(function (k) {
+          panels[k].classList.toggle("active", k === name);
+        });
+        if (location.hash !== "#" + name) {
+          try { history.replaceState(null, "", "#" + name); } catch (e) {}
+        }
+      }
+      tabs.forEach(function (t) {
+        t.addEventListener("click", function () { show(t.getAttribute("data-tab")); });
+      });
+      var hash = (location.hash || "").replace("#", "");
+      if (panels[hash]) show(hash);
+    })();
+  </script>
 </body>
 </html>
